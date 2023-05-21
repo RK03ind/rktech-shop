@@ -1,0 +1,22 @@
+.category-container {
+  padding: 1.5rem;
+}
+
+.category-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.category-item img {
+}

@@ -8,20 +8,37 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
-    description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+    categoryName: "Gaming Laptop",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/gaming-laptop-3-120x120_tjrrlr.jpg",
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
-    description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+    categoryName: "Processor",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/cpu-120x120_nkmac0.jpg",
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
+    categoryName: "Graphics Unit",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/gpu-120x120_xnzhnh.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Others",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/gaming-accesories-1-120x120_ktqlvy.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Cooling",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/fans-cooling-120x120_dvzs41.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Storage",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/storage-3-120x120_ntkbpc.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Cabinet",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/cabinet-case-120x120_ce7jjw.jpg",
   },
 ];
