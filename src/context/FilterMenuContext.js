@@ -1,24 +1,55 @@
 import { createContext, useReducer } from "react";
 
-const FilterMenuContext = createContext();
+export const FilterMenuContext = createContext();
 
 const defaultFilterState = {
   category: [],
-  rating: "",
+  rating: 5.0,
   sort: true,
-  ratings: 0,
   searchTerm: "",
+  isSearchVisible: false,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "ADD_CATEGORY":
+    case "CLEAR":
+      return defaultFilterState;
+    case "UPDATE_CATEGORY":
+      if (state.category.includes(action.payload))
+        return {
+          ...state,
+          category: state.category.filter((item) => item !== action.payload),
+        };
       return { ...state, category: [...state.category, action.payload] };
-    case "REMOVE_CATEGORY":
+    // case "ADD_CATEGORY":
+    //   return { ...state, category: [...state.category, action.payload] };
+
+    // case "REMOVE_CATEGORY":
+    //   return {
+    //     ...state,
+    //     category: state.filter((item) => item !== action.payload),
+    //   };
+    case "UPDATE_SORT":
       return {
         ...state,
-        category: state.filter((item) => item !== action.payload),
+        sort: !state.sort,
       };
+    case "UPDATE_RATING":
+      return {
+        ...state,
+        rating: action.payload,
+      };
+    case "UPDATE_SEARCH":
+      return {
+        ...state,
+        searchTerm: action.payload,
+      };
+    case "TOGGLE_SEARCH":
+      return {
+        ...state,
+        isSearchVisible: !state.isSearchVisible,
+      };
+
     default:
       return state;
   }
@@ -26,4 +57,10 @@ const reducer = (state, action) => {
 
 export const FilterMenuProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultFilterState);
+
+  return (
+    <FilterMenuContext.Provider value={{ state, dispatch }}>
+      {children}
+    </FilterMenuContext.Provider>
+  );
 };

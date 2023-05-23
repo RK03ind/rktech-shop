@@ -1,0 +1,52 @@
+.filter-menu {
+  display: flex;
+  padding: 1rem 2rem 0 1.5rem;
+  height: calc(100vh - 1.6rem);
+  flex-direction: column;
+  gap: 1.2rem;
+  border-right: 1px solid #c2c2c2;
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.filter-header h4 {
+  margin: 0.5rem 0;
+}
+.filter-header span:nth-child(2) {
+  cursor: pointer;
+  font-size: 0.85rem;
+  border-bottom: 1px solid gray;
+  color: gray;
+  margin-left: auto;
+}
+
+.filter-category .category-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  font-size: 0.85em;
+  margin-top: 0.2rem;
+}
+
+.sort-price .sort-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.4rem;
+  font-size: 0.85em;
+  margin-top: 0.2rem;
+}
+
+.rating-item {
+  display: flex;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.rating-item :nth-child(3) {
+  width: 3.25rem;
+}
