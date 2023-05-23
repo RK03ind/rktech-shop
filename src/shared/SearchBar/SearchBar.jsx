@@ -1,18 +1,26 @@
 import { GoSearch } from "react-icons/go";
 import "./SearchBar.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
+import { useDebounce } from "use-debounce";
 const SearchBar = () => {
   const filterMenuCtx = useContext(FilterMenuContext);
+  const [inputState, setInputState] = useState("");
+  const [value] = useDebounce(inputState, 1000);
+  useEffect(() => {
+    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: value });
+  }, [value]);
+
   const inputChangeHandler = (e) => {
-    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: e.target.value });
+    setInputState(e.target.value);
   };
   return (
     <div className="search-bar">
       <input
         type="text"
-        value={filterMenuCtx.state.searchTerm}
+        value={inputState}
         onChange={inputChangeHandler}
+        placeholder="Search for Products...."
       />
       <div>
         <GoSearch />

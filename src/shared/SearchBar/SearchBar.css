@@ -1,17 +1,36 @@
 .search-bar {
   position: absolute;
-  top: 70px;
+  top: 75px;
   right: 110px;
   background: white;
   padding: 0.5rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  border: 1px solid #313846;
+  background-color: #313846;
+  border-radius: 16px;
+  gap: 0.1rem;
 }
 
 .search-bar input {
   background: rgba(237, 242, 254, 1);
-  padding: 0.8rem;
-  font-size: 1.1rem;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
   color: grey;
+  border: 0;
+  border-radius: 8px;
+}
+
+.search-bar div {
+  display: grid;
+  place-items: center;
+  background-color: #313846;
+  color: rgba(182, 187, 198, 1);
+  font-size: 22px;
+  min-width: 52px;
+  height: 100%;
+  padding: 0.62rem 0;
+  font-weight: 600;
 }
