@@ -1,7 +1,9 @@
 .filter-menu {
   display: flex;
   padding: 1rem 2rem 0 1.5rem;
-  height: calc(100vh - 1.6rem);
+  width: 17rem;
+  position: fixed;
+  height: 100%;
   flex-direction: column;
   gap: 1.2rem;
   border-right: 1px solid #c2c2c2;
