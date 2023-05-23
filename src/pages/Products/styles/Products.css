@@ -3,15 +3,20 @@
 }
 
 .product-wrapper {
+  margin-left: 17em;
   width: 100%;
   padding: 1rem 1.5rem;
+}
+
+.product-wrapper h2 {
+  margin-bottom: 2rem;
 }
 
 .products-container {
   display: flex;
   flex-wrap: wrap;
   padding: 0.5rem;
-  gap: 4rem;
+  gap: 3.5rem;
   align-items: flex-start;
   justify-content: center;
 }
