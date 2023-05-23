@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useGetData from "../../hooks/useGetData";
 import "./styles/Home.css";
 import CategoryItem from "./components/CategoryItem";
@@ -15,7 +14,7 @@ const Home = () => {
     <>
       <ImageCarousel {...{ images }} />
       <div className="category-container">
-        <h2>Categories</h2>
+        <h1>CATEGORIES</h1>
         <div className="category-items">
           {!loading &&
             !error &&
