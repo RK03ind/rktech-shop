@@ -16,15 +16,17 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <span className="title">💻RKTECH</span>
+        <span className="title" onClick={() => navigate("/")}>
+          💻RKTECH
+        </span>
         <div className="nav-tabs">
           <ImSearch
             onClick={() => filterMenuCtx.dispatch({ type: "TOGGLE_SEARCH" })}
           />
-          <FaShoppingBag />
+          <FaShoppingBag onClick={() => navigate("products")} />
           <FaShoppingCart />
           <FaHeart />
-          <FaUser />
+          <FaUser onClick={() => navigate("profile")} />
         </div>
       </nav>
       {filterMenuCtx.state.isSearchVisible && <SearchBar />}
