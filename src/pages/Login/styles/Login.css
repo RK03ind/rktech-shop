@@ -1,0 +1,15 @@
+.login-container {
+  display: grid;
+  place-items: center;
+}
+
+.login-container .login-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container .login-card .email,
+.login-container .login-card .password {
+  display: flex;
+  flex-direction: column;
+}
