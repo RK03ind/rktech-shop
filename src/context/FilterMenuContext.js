@@ -21,14 +21,6 @@ const reducer = (state, action) => {
           category: state.category.filter((item) => item !== action.payload),
         };
       return { ...state, category: [...state.category, action.payload] };
-    // case "ADD_CATEGORY":
-    //   return { ...state, category: [...state.category, action.payload] };
-
-    // case "REMOVE_CATEGORY":
-    //   return {
-    //     ...state,
-    //     category: state.filter((item) => item !== action.payload),
-    //   };
     case "UPDATE_SORT":
       return {
         ...state,
