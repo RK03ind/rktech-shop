@@ -6,6 +6,8 @@ import usePostData from "../../hooks/usePostData";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import useDeleteData from "../../hooks/useDeleteData";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ imageLink, rating, price, name, _id }) => {
   const addToCart = usePostData("/api/user/cart", true);
@@ -13,15 +15,23 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
   const removeFromCart = useDeleteData(`/api/user/cart/${_id}`, true);
   const removeFromWishlist = useDeleteData(`/api/user/wishlist/${_id}`, true);
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
+  const itemData = { product: { imageLink, rating, price, name, _id } };
 
-  const addToCartHandler = () => {
-    addToCart.postData({ product: { imageLink, rating, price, name, _id } });
+  const addToHandler = (req) => {
+    if (!authCtx.state.token) {
+      toast.error("Login to use Cart");
+      navigate("/login");
+    }
+    if (!req.loading) {
+      req.postData(itemData);
+    }
   };
 
-  const addToWishlistHandler = () => {
-    addToWishlist.postData({
-      product: { imageLink, rating, price, name, _id },
-    });
+  const removeFromHandler = (req) => {
+    if (!req.loading) {
+      req.deleteData();
+    }
   };
 
   return (
@@ -33,20 +43,26 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
         <span>₹{price}</span>
       </div>
       <div className="product-action">
-        <div>
-          {authCtx.userData.cart.some((item) => item._id === _id) ? (
-            <BsFillCartCheckFill onClick={() => removeFromCart.deleteData()} />
-          ) : (
-            <BsFillCartPlusFill onClick={addToCartHandler} />
-          )}
-        </div>
-        <div>
-          {authCtx.userData.wishlist.some((item) => item._id === _id) ? (
-            <AiFillHeart onClick={() => removeFromWishlist.deleteData()} />
-          ) : (
-            <AiOutlineHeart onClick={addToWishlistHandler} />
-          )}
-        </div>
+        {authCtx.state.userData?.cart.some((item) => item._id === _id) ? (
+          <div onClick={() => removeFromHandler(removeFromCart)}>
+            <BsFillCartCheckFill />
+          </div>
+        ) : (
+          <div onClick={() => addToHandler(addToCart)}>
+            <BsFillCartPlusFill />
+          </div>
+        )}
+
+        {authCtx.state.userData?.wishlist.some((item) => item._id === _id) ? (
+          <div onClick={() => removeFromHandler(removeFromWishlist)}>
+            <AiFillHeart />
+          </div>
+        ) : (
+          <div onClick={() => addToHandler(addToWishlist)}>
+            <AiOutlineHeart />
+          </div>
+        )}
+
         <div className="rating">
           {rating}
           <AiFillStar />

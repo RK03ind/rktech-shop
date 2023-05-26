@@ -13,6 +13,8 @@ import Login from "./pages/Login/Login";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import Profile from "./pages/Profile/Profile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -25,7 +27,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="products" element={<Products />} />
             {/* {!authCtx.token && <Route path="login" element={<Login />} />} */}
-            {authCtx.token ? (
+            {authCtx.state.token ? (
               <>
                 <Route path="profile" element={<Profile />} />
                 <Route path="login" element={<Navigate to="/profile" />} />
@@ -38,6 +40,18 @@ function App() {
           </Routes>
         </main>
       </Router>
+      <ToastContainer
+        position="top-center"
+        autoClose={1500}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        theme="light"
+        closeButton={false}
+      />
     </>
   );
 }
