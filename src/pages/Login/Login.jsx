@@ -14,8 +14,8 @@ const Login = () => {
 
   useEffect(() => {
     if (!loading && !error && data) {
-      authCtx.setToken(data.encodedToken);
-      authCtx.setUserData(data.foundUser);
+      authCtx.dispatch({ type: "UPDATE_TOKEN", payload: data.encodedToken });
+      authCtx.dispatch({ type: "UPDATE_USER", payload: data.foundUser });
       localStorage.setItem("token", data.encodedToken);
       localStorage.setItem("user", JSON.stringify(data.foundUser));
       navigate("/products");

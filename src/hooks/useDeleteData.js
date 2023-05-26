@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const useDeleteData = (url, isAuthRequired = false) => {
   const [data, setData] = useState(null);
@@ -14,7 +15,7 @@ const useDeleteData = (url, isAuthRequired = false) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          authorization: isAuthRequired ? authCtx.token : "",
+          authorization: isAuthRequired ? authCtx.state.token : "",
         },
         body: JSON.stringify(body),
       });
@@ -22,9 +23,14 @@ const useDeleteData = (url, isAuthRequired = false) => {
         throw new Error("An error occurred while making the request.");
       }
       const result = await response.json();
-      if (url.split("/").includes("cart")) authCtx.updateCart(result.cart);
-      if (url.split("/").includes("wishlist"))
-        authCtx.updateWishlist(result.wishlist);
+      if (url.split("/").includes("cart")) {
+        authCtx.dispatch({ type: "UPDATE_CART", payload: result.cart });
+        toast.error("Removed from Cart");
+      }
+      if (url.split("/").includes("wishlist")) {
+        authCtx.dispatch({ type: "UPDATE_WISH", payload: result.wishlist });
+        toast.error("Removed from Wishlist");
+      }
       setData(result);
     } catch (err) {
       setError(err.message);
