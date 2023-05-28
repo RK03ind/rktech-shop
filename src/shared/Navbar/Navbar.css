@@ -27,3 +27,7 @@ nav .nav-tabs {
 nav .nav-tabs svg {
   cursor: pointer;
 }
+
+nav .nav-tabs svg:hover {
+  color: yellow;
+}
