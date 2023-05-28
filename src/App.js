@@ -17,6 +17,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loader from "./shared/Loader/Loader";
 import { LoaderContext } from "./context/LoaderContext";
+import Register from "./pages/Register/Register";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -38,6 +39,7 @@ function App() {
             ) : (
               <>
                 <Route path="login" element={<Login />} />
+                <Route path="register" element={<Register />} />
                 <Route path="profile" element={<Navigate to="/login" />} />
               </>
             )}
