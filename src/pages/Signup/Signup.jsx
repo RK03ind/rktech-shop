@@ -4,6 +4,9 @@ import { useContext, useEffect, useState } from "react";
 import usePostData from "../../hooks/usePostData";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { hasNoEmptyProperties } from "../../utils/hasNoEmptyProperties";
+import { toast } from "react-toastify";
+import { persistLoginData } from "../../utils/persistLoginData";
 const Signup = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/signup");
   const authCtx = useContext(AuthContext);
@@ -19,14 +22,14 @@ const Signup = () => {
     if (!loading && !error && data) {
       authCtx.dispatch({ type: "UPDATE_TOKEN", payload: data.encodedToken });
       authCtx.dispatch({ type: "UPDATE_USER", payload: data.createdUser });
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("user", JSON.stringify(data.createdUser));
+      persistLoginData(data.encodedToken, data.createdUser);
       navigate("/products");
     }
   }, [loading, error, data, navigate, authCtx]);
 
   const postSignUpData = () => {
-    postData({ ...formState });
+    if (hasNoEmptyProperties(formState)) return postData({ ...formState });
+    toast.warn("Fill up all the required input fields");
   };
 
   const inputChangeHandler = (e) => {

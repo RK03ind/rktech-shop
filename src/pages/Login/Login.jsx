@@ -4,31 +4,36 @@ import usePostData from "../../hooks/usePostData";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./styles/Login.css";
+import { toast } from "react-toastify";
+import { persistLoginData } from "../../utils/persistLoginData";
 
 const Login = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/login");
-  const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
   const passwordRef = useRef(null);
   const emailRef = useRef(null);
+  const navigate = useNavigate();
 
   const loginWithTestData = () => {
     postData({ email: "adarshbalika@gmail.com", password: "adarshbalika" });
   };
 
   const postLoginData = () => {
-    postData({
-      email: emailRef.current.value,
-      password: passwordRef.current.value,
-    });
+    const {
+      current: { value: email },
+    } = emailRef;
+    const {
+      current: { value: password },
+    } = passwordRef;
+    if (email && password) return postData({ email, password });
+    toast.warn("Fill up all the fields");
   };
 
   useEffect(() => {
     if (!loading && !error && data) {
       authCtx.dispatch({ type: "UPDATE_TOKEN", payload: data.encodedToken });
       authCtx.dispatch({ type: "UPDATE_USER", payload: data.foundUser });
-      localStorage.setItem("token", data.encodedToken);
-      localStorage.setItem("user", JSON.stringify(data.foundUser));
+      persistLoginData(data.encodedToken, data.foundUser);
       navigate("/products");
     }
   }, [loading, error, data, navigate, authCtx]);
@@ -39,14 +44,14 @@ const Login = () => {
         <h2>Sign In</h2>
         <label className="input-wrapper">
           <label>Email</label>
-          <input type="text" placeholder="email@email.com" ref={emailRef} />
+          <input type="email" placeholder="email@email.com" ref={emailRef} />
         </label>
         <label className="input-wrapper">
           <label>Password</label>
           <input type="password" placeholder="**********" ref={passwordRef} />
         </label>
-        <button onClick={loginWithTestData}>Login With Test Credentials</button>
         <button onClick={postLoginData}>Login</button>
+        <button onClick={loginWithTestData}>Login With Test Credentials</button>
         <div className="register" onClick={() => navigate("/signup")}>
           Create new account <FiChevronRight size={16} strokeWidth={4} />
         </div>
