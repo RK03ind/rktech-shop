@@ -40,6 +40,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         isSearchVisible: !state.isSearchVisible,
+        searchTerm: state.isSearchVisible ? "" : state.searchTerm,
       };
 
     default:
