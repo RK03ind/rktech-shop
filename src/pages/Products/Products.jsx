@@ -15,11 +15,12 @@ const Products = () => {
           (filterState.category.includes(category) ||
             filterState.category.length === 0) &&
           filterState.rating >= rating &&
-          (name
-            .toLowerCase()
-            .trim()
-            .includes(filterState.searchTerm.trim().toLowerCase()) ||
-            category.includes(filterState.searchTerm) ||
+          ((filterState.isSearchVisible &&
+            (name
+              .toLowerCase()
+              .trim()
+              .includes(filterState.searchTerm.trim().toLowerCase()) ||
+              category.includes(filterState.searchTerm))) ||
             !filterState.searchTerm)
       )
       .sort((a, b) =>
