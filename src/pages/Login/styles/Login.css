@@ -33,6 +33,7 @@
   border-radius: 5px;
   border: 2px solid #dfdfdf;
   font-size: 0.85rem;
+  font-family: inherit;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
@@ -49,4 +50,16 @@
   background-color: rgb(64, 83, 120);
   color: white;
   border: 0;
+}
+
+.login-container .login-card .register {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.85rem;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  gap: 0.2rem;
+  text-align: center;
 }

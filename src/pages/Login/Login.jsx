@@ -1,8 +1,10 @@
+import { FiChevronRight } from "react-icons/fi";
 import { useContext, useEffect } from "react";
 import usePostData from "../../hooks/usePostData";
-import "./styles/Login.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import "./styles/Login.css";
+
 const Login = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/login");
   const navigate = useNavigate();
@@ -28,14 +30,17 @@ const Login = () => {
         <h2>Sign In</h2>
         <label className="input-wrapper">
           <label>Email</label>
-          <input type="text" />
+          <input type="text" placeholder="email@email.com" />
         </label>
         <label className="input-wrapper">
           <label>Password</label>
-          <input type="text" />
+          <input type="password" placeholder="**********" />
         </label>
         <button onClick={loginWithTestData}>Login With Test Credentials</button>
         <button>Login</button>
+        <div className="register" onClick={() => navigate("register")}>
+          Create new account <FiChevronRight size={16} strokeWidth={4} />
+        </div>
       </div>
     </div>
   );
