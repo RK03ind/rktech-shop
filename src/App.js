@@ -15,9 +15,13 @@ import { AuthContext } from "./context/AuthContext";
 import Profile from "./pages/Profile/Profile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "./shared/Loader/Loader";
+import { LoaderContext } from "./context/LoaderContext";
 
 function App() {
   const authCtx = useContext(AuthContext);
+  const loaderCtx = useContext(LoaderContext);
+
   return (
     <>
       <Router>
@@ -26,20 +30,24 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="products" element={<Products />} />
-            {/* {!authCtx.token && <Route path="login" element={<Login />} />} */}
             {authCtx.state.token ? (
               <>
                 <Route path="profile" element={<Profile />} />
                 <Route path="login" element={<Navigate to="/profile" />} />
               </>
             ) : (
-              <Route path="login" element={<Login />} />
+              <>
+                <Route path="login" element={<Login />} />
+                <Route path="profile" element={<Navigate to="/login" />} />
+              </>
             )}
             <Route path="*" element={<Navigate to="/products" />} />
             <Route path="mockman" element={<Mockman />} />
           </Routes>
         </main>
       </Router>
+      {loaderCtx.state && <Loader />}
+
       <ToastContainer
         position="top-center"
         autoClose={1500}

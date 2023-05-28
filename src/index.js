@@ -6,6 +6,7 @@ import { makeServer } from "./server";
 import { FilterMenuProvider } from "./context/FilterMenuContext";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
+import { LoaderProvider } from "./context/LoaderContext";
 
 // Call make Server
 makeServer();
@@ -13,11 +14,13 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <FilterMenuProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </FilterMenuProvider>
+      <LoaderProvider>
+        <FilterMenuProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </FilterMenuProvider>
+      </LoaderProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
