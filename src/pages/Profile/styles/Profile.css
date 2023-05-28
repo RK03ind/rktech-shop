@@ -1,0 +1,30 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 5rem);
+}
+
+.profile-container h2 {
+  margin-top: 4rem;
+}
+.profile-container .tab-switcher {
+  display: flex;
+  width: 24rem;
+  max-width: 94vw;
+  margin-top: 2rem;
+}
+.profile-container .tab-switcher .tab-item {
+  cursor: pointer;
+  width: 12rem;
+  padding: 0.4rem 0;
+  text-align: center;
+  font-weight: 600;
+  transition: background-color 0.25s ease;
+}
+
+.profile-container .tab-switcher .tab-item:hover,
+.profile-container .tab-switcher .tab-item.active {
+  background-color: rgb(64, 83, 120);
+  color: white;
+}
