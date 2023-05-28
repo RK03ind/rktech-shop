@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { hasNoEmptyProperties } from "../../utils/hasNoEmptyProperties";
 import { toast } from "react-toastify";
 import { persistLoginData } from "../../utils/persistLoginData";
+import { trimObjectValues } from "../../utils/trimObjectValues";
 const Signup = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/signup");
   const authCtx = useContext(AuthContext);
@@ -28,6 +29,7 @@ const Signup = () => {
   }, [loading, error, data, navigate, authCtx]);
 
   const postSignUpData = () => {
+    trimObjectValues(formState);
     if (hasNoEmptyProperties(formState)) return postData({ ...formState });
     toast.warn("Fill up all the required input fields");
   };
