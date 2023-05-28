@@ -33,6 +33,11 @@ const reducer = (state, action) => {
           wishlist: action.payload,
         },
       };
+    case "LOGOUT":
+      return {
+        token: "",
+        userData: "",
+      };
     default:
       return state;
   }
