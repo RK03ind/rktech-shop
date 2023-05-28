@@ -1,28 +1,27 @@
-import { useContext } from "react";
 import "./styles/Profile.css";
-import { AuthContext } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import ProfileCard from "./components/ProfileCard";
 const Profile = () => {
-  const authCtx = useContext(AuthContext);
-  const navigate = useNavigate();
-
-  const logoutUser = () => {
-    authCtx.dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    navigate("/");
-  };
+  const [tabState, setTabState] = useState(true);
 
   return (
     <div className="profile-container">
-      <div className="profile-card">
-        <span>
-          Name:{authCtx.state.userData.firstName}{" "}
-          {authCtx.state.userData.lastName}
-        </span>
-        <span>Email:{authCtx.state.userData.email}</span>
-        <button onClick={logoutUser}>Logout</button>
+      <h2>Account</h2>
+      <div className="tab-switcher">
+        <div
+          className={`tab-item ${tabState ? "active" : ""}`}
+          onClick={() => setTabState(true)}
+        >
+          Profile
+        </div>
+        <div
+          className={`tab-item ${!tabState ? "active" : ""}`}
+          onClick={() => setTabState(false)}
+        >
+          Address
+        </div>
       </div>
+      {tabState && <ProfileCard />}
     </div>
   );
 };
