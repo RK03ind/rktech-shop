@@ -1,6 +1,7 @@
 import "./styles/Profile.css";
 import { useState } from "react";
 import ProfileCard from "./components/ProfileCard";
+import AddressCard from "./components/AddressCard";
 const Profile = () => {
   const [tabState, setTabState] = useState(true);
 
@@ -21,7 +22,7 @@ const Profile = () => {
           Address
         </div>
       </div>
-      {tabState && <ProfileCard />}
+      {tabState ? <ProfileCard /> : <AddressCard />}
     </div>
   );
 };

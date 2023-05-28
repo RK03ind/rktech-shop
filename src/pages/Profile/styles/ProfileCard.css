@@ -5,9 +5,7 @@
   padding: 0.8rem 1.5rem;
   border-top: 3px solid rgb(66, 99, 165);
 }
-.profile-card .user-details {
-  width: fit-content;
-}
+
 .profile-card .user-details h4 {
   padding-bottom: 0.2rem;
   border-bottom: 1.5px solid black;
