@@ -8,7 +8,7 @@
   align-items: center;
   border: 1px solid #313846;
   background-color: #313846;
-  border-radius: 16px;
+  border-radius: 10px;
   gap: 0.1rem;
   z-index: 999;
 }
@@ -25,13 +25,17 @@
 }
 
 .search-bar div {
+  cursor: pointer;
   display: grid;
   place-items: center;
-  background-color: #313846;
-  color: rgba(182, 187, 198, 1);
   font-size: 22px;
-  min-width: 52px;
+  min-width: 50px;
   height: 100%;
   padding: 0.62rem 0;
   font-weight: 600;
+}
+
+.search-bar div svg path {
+  stroke: rgba(237, 242, 254, 1);
+  stroke-width: 3px;
 }

@@ -1,5 +1,5 @@
-import { GoSearch } from "react-icons/go";
 import "./SearchBar.css";
+import { GrClose } from "react-icons/gr";
 import { useContext, useEffect, useState } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 import { useDebounce } from "use-debounce";
@@ -28,8 +28,8 @@ const SearchBar = () => {
         onChange={inputChangeHandler}
         placeholder="Search for Products...."
       />
-      <div>
-        <GoSearch />
+      <div onClick={() => filterMenuCtx.dispatch({ type: "TOGGLE_SEARCH" })}>
+        <GrClose />
       </div>
     </div>
   );
