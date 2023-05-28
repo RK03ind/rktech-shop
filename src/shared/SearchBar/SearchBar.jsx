@@ -11,7 +11,7 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: value.trim() });
+    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: value });
     if (value.trim()) {
       navigate("products");
     }
