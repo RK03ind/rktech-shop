@@ -25,17 +25,17 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h4>Sign In</h4>
-        <label className="email">
+        <h2>Sign In</h2>
+        <label className="input-wrapper">
           <label>Email</label>
           <input type="text" />
         </label>
-        <label className="password">
+        <label className="input-wrapper">
           <label>Password</label>
           <input type="text" />
         </label>
-        <button>Login</button>
         <button onClick={loginWithTestData}>Login With Test Credentials</button>
+        <button>Login</button>
       </div>
     </div>
   );

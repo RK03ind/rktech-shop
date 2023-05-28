@@ -1,15 +1,52 @@
 .login-container {
   display: grid;
   place-items: center;
+  height: calc(100vh - 5rem);
 }
 
 .login-container .login-card {
   display: flex;
   flex-direction: column;
+  width: 22rem;
+  max-width: 90vw;
+  padding: 2rem;
+  gap: 1em;
+  box-shadow: 0 7px 29px 0 rgba(100, 100, 111, 0.2);
 }
 
-.login-container .login-card .email,
-.login-container .login-card .password {
+.login-container .login-card h2 {
+  text-align: center;
+  margin-top: 0;
+}
+
+.login-container .login-card .input-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.login-container .login-card label {
+  font-size: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.login-container .login-card input {
+  border-radius: 5px;
+  border: 2px solid #dfdfdf;
+  font-size: 0.85rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.login-container .login-card input:hover,
+.login-container .login-card input:focus {
+  border-color: rgba(53, 69, 100, 1);
+}
+
+.login-container .login-card button {
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 700;
+  background-color: rgb(64, 83, 120);
+  color: white;
+  border: 0;
 }
