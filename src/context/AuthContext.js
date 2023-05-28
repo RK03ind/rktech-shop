@@ -35,8 +35,8 @@ const reducer = (state, action) => {
       };
     case "LOGOUT":
       return {
-        token: "",
-        userData: "",
+        token: null,
+        userData: null,
       };
     default:
       return state;
