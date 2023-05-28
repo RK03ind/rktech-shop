@@ -29,8 +29,9 @@ const Signup = () => {
   }, [loading, error, data, navigate, authCtx]);
 
   const postSignUpData = () => {
-    trimObjectValues(formState);
-    if (hasNoEmptyProperties(formState)) return postData({ ...formState });
+    const dataObj = { ...formState };
+    trimObjectValues(dataObj);
+    if (hasNoEmptyProperties(dataObj)) return postData({ ...dataObj });
     toast.warn("Fill up all the required input fields");
   };
 
