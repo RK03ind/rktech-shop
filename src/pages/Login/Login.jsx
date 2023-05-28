@@ -1,5 +1,5 @@
 import { FiChevronRight } from "react-icons/fi";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useRef } from "react";
 import usePostData from "../../hooks/usePostData";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -9,9 +9,18 @@ const Login = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/login");
   const navigate = useNavigate();
   const authCtx = useContext(AuthContext);
+  const passwordRef = useRef(null);
+  const emailRef = useRef(null);
 
   const loginWithTestData = () => {
     postData({ email: "adarshbalika@gmail.com", password: "adarshbalika" });
+  };
+
+  const postLoginData = () => {
+    postData({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
   };
 
   useEffect(() => {
@@ -30,15 +39,15 @@ const Login = () => {
         <h2>Sign In</h2>
         <label className="input-wrapper">
           <label>Email</label>
-          <input type="text" placeholder="email@email.com" />
+          <input type="text" placeholder="email@email.com" ref={emailRef} />
         </label>
         <label className="input-wrapper">
           <label>Password</label>
-          <input type="password" placeholder="**********" />
+          <input type="password" placeholder="**********" ref={passwordRef} />
         </label>
         <button onClick={loginWithTestData}>Login With Test Credentials</button>
-        <button>Login</button>
-        <div className="register" onClick={() => navigate("register")}>
+        <button onClick={postLoginData}>Login</button>
+        <div className="register" onClick={() => navigate("/signup")}>
           Create new account <FiChevronRight size={16} strokeWidth={4} />
         </div>
       </div>
