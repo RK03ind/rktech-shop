@@ -3,12 +3,18 @@ import "./SearchBar.css";
 import { useContext, useEffect, useState } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 import { useDebounce } from "use-debounce";
+import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const filterMenuCtx = useContext(FilterMenuContext);
   const [inputState, setInputState] = useState("");
   const [value] = useDebounce(inputState, 1000);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: value });
+    filterMenuCtx.dispatch({ type: "UPDATE_SEARCH", payload: value.trim() });
+    if (value.trim()) {
+      navigate("products");
+    }
   }, [value]);
 
   const inputChangeHandler = (e) => {

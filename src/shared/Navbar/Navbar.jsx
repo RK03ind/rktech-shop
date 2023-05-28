@@ -3,16 +3,11 @@ import { FaShoppingBag, FaShoppingCart, FaUser, FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import SearchBar from "../SearchBar/SearchBar";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 const Navbar = () => {
   const filterMenuCtx = useContext(FilterMenuContext);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (filterMenuCtx.state.searchTerm) {
-      navigate("products");
-    }
-  }, [filterMenuCtx.state.searchTerm, navigate]);
   return (
     <>
       <nav>
