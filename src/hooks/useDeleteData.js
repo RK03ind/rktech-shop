@@ -8,7 +8,7 @@ const useDeleteData = (url, isAuthRequired = false) => {
   const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
 
-  const deleteData = async (body) => {
+  const deleteData = async () => {
     setLoading(true);
     try {
       const response = await fetch(url, {
@@ -17,12 +17,12 @@ const useDeleteData = (url, isAuthRequired = false) => {
           "Content-Type": "application/json",
           authorization: isAuthRequired ? authCtx.state.token : "",
         },
-        body: JSON.stringify(body),
       });
       if (!response.ok) {
         throw new Error("An error occurred while making the request.");
       }
       const result = await response.json();
+      console.log(result);
       if (url.split("/").includes("cart")) {
         authCtx.dispatch({ type: "UPDATE_CART", payload: result.cart });
         toast.error("Removed from Cart");
@@ -30,6 +30,10 @@ const useDeleteData = (url, isAuthRequired = false) => {
       if (url.split("/").includes("wishlist")) {
         authCtx.dispatch({ type: "UPDATE_WISH", payload: result.wishlist });
         toast.error("Removed from Wishlist");
+      }
+      if (url.split("/").includes("address")) {
+        authCtx.dispatch({ type: "UPDATE_ADDRESS", payload: result.address });
+        toast.error("Removed from address");
       }
       setData(result);
     } catch (err) {
