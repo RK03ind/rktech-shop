@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "../styles/AddNewAddress.css";
 import usePostData from "../../../hooks/usePostData";
+import { trimObjectValues } from "../../../utils/trimObjectValues";
+import { hasNoEmptyProperties } from "../../../utils/hasNoEmptyProperties";
+import { toast } from "react-toastify";
 
 const AddNewAddress = ({
   name = "",
@@ -24,7 +27,11 @@ const AddNewAddress = ({
   const addNewAddress = usePostData("/api/user/address", true, "address");
 
   const postNewSignupData = () => {
-    addNewAddress.postData(formState);
+    const dataObj = { ...formState };
+    trimObjectValues(dataObj);
+    if (hasNoEmptyProperties(dataObj) && !addNewAddress.loading)
+      return addNewAddress.postData({ ...dataObj });
+    toast.warn("Fill up all the required input fields");
   };
 
   const inputChangeHandler = (e) => {
@@ -86,7 +93,7 @@ const AddNewAddress = ({
         />
       </form>
       <div className="form-actions">
-        <button>Save</button>
+        <button onClick={postNewSignupData}>Save</button>
       </div>
     </div>
   );
