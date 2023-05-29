@@ -54,3 +54,10 @@
 .address-card .address-item .address-action > span svg {
   fill: inherit;
 }
+
+.address-card > span {
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
