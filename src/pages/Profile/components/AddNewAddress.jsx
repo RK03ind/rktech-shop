@@ -26,11 +26,11 @@ const AddNewAddress = ({
   });
   const addNewAddress = usePostData("/api/user/address", true, "address");
 
-  const postNewSignupData = () => {
+  const postNewAddressData = () => {
     const dataObj = { ...formState };
     trimObjectValues(dataObj);
     if (hasNoEmptyProperties(dataObj) && !addNewAddress.loading)
-      return addNewAddress.postData({ ...dataObj });
+      return addNewAddress.postData({ address: { ...dataObj } });
     toast.warn("Fill up all the required input fields");
   };
 
@@ -93,7 +93,7 @@ const AddNewAddress = ({
         />
       </form>
       <div className="form-actions">
-        <button onClick={postNewSignupData}>Save</button>
+        <button onClick={postNewAddressData}>Save</button>
       </div>
     </div>
   );
