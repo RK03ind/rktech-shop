@@ -23,14 +23,12 @@ const useDeleteData = (url, isAuthRequired = false, stateToUpdate = null) => {
       }
       const result = await response.json();
       //Updating context state
-      if (stateToUpdate) {
-        if (url.split("/").includes(stateToUpdate)) {
-          authCtx.dispatch({
-            type: `UPDATE_${stateToUpdate.toUpperCase()}`,
-            payload: result[stateToUpdate],
-          });
-          toast.error(`Removed from ${stateToUpdate}`);
-        }
+      if (stateToUpdate && url.split("/").includes(stateToUpdate)) {
+        authCtx.dispatch({
+          type: `UPDATE_${stateToUpdate.toUpperCase()}`,
+          payload: result[stateToUpdate],
+        });
+        toast.error(`Removed from ${stateToUpdate}`);
       }
       setData(result);
     } catch (err) {
