@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "../styles/AddressCard.css";
-import { MdEdit, MdDelete } from "react-icons/md";
 import { AuthContext } from "../../../context/AuthContext";
 import AddressItem from "./AddressItem";
 const AddressCard = () => {

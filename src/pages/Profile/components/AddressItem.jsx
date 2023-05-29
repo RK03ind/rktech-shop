@@ -1,4 +1,5 @@
 import { MdEdit, MdDelete } from "react-icons/md";
+import useDeleteData from "../../../hooks/useDeleteData";
 const AddressItem = ({
   name,
   street,
@@ -9,6 +10,11 @@ const AddressItem = ({
   contactNo,
   _id,
 }) => {
+  const { deleteData } = useDeleteData(
+    `/api/user/address/${_id}`,
+    true,
+    "address"
+  );
   return (
     <div className="address-item">
       <h4>Rudra Konar</h4>
@@ -21,7 +27,7 @@ const AddressItem = ({
         <span>
           <MdEdit size={17} />
         </span>
-        <span>
+        <span onClick={deleteData}>
           <MdDelete size={17} />
         </span>
       </div>
