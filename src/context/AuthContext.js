@@ -25,12 +25,20 @@ const reducer = (state, action) => {
           cart: action.payload,
         },
       };
-    case "UPDATE_WISH":
+    case "UPDATE_WISHLIST":
       return {
         ...state,
         userData: {
           ...state.userData,
           wishlist: action.payload,
+        },
+      };
+    case "UPDATE_ADDRESS":
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          address: action.payload,
         },
       };
     case "LOGOUT":
