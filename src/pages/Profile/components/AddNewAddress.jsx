@@ -25,12 +25,25 @@ const AddNewAddress = ({
     contactNo,
   });
   const addNewAddress = usePostData("/api/user/address", true, "address");
-
+  const updateExisitingAddress = usePostData(
+    `/api/user/address/${_id}`,
+    true,
+    "address"
+  );
   const postNewAddressData = () => {
     const dataObj = { ...formState };
     trimObjectValues(dataObj);
-    if (hasNoEmptyProperties(dataObj) && !addNewAddress.loading)
+    if (
+      hasNoEmptyProperties(dataObj) &&
+      !addNewAddress.loading &&
+      !updateExisitingAddress.loading
+    ) {
+      if (_id) {
+        console.log("lmao im here");
+        return updateExisitingAddress.postData({ address: { ...dataObj } });
+      }
       return addNewAddress.postData({ address: { ...dataObj } });
+    }
     toast.warn("Fill up all the required input fields");
   };
 
