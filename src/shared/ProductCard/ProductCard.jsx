@@ -10,8 +10,8 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ imageLink, rating, price, name, _id }) => {
-  const addToCart = usePostData("/api/user/cart", true);
-  const addToWishlist = usePostData("/api/user/wishlist", true);
+  const addToCart = usePostData("/api/user/cart", true, "cart");
+  const addToWishlist = usePostData("/api/user/wishlist", true, "wishlist");
   const removeFromCart = useDeleteData(`/api/user/cart/${_id}`, true, "cart");
   const removeFromWishlist = useDeleteData(
     `/api/user/wishlist/${_id}`,

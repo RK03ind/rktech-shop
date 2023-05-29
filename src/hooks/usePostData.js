@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
-const usePostData = (url, isAuthRequired = false) => {
+const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -23,13 +23,12 @@ const usePostData = (url, isAuthRequired = false) => {
         throw new Error("An error occurred while making the request.");
       }
       const result = await response.json();
-      if (url === "/api/user/cart") {
-        authCtx.dispatch({ type: "UPDATE_CART", payload: result.cart });
-        toast.success("Added to Cart");
-      }
-      if (url === "/api/user/wishlist") {
-        authCtx.dispatch({ type: "UPDATE_WISH", payload: result.wishlist });
-        toast.success("Added to Wishlist");
+      if (stateToUpdate && url.split("/").includes(stateToUpdate)) {
+        authCtx.dispatch({
+          type: `UPDATE_${stateToUpdate.toUpperCase()}`,
+          payload: result[stateToUpdate],
+        });
+        toast.success(`Added to ${stateToUpdate}`);
       }
       setData(result);
     } catch (err) {
