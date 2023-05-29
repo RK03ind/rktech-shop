@@ -25,6 +25,7 @@ import {
 import {
   addNewAddressHandler,
   removeAddressHandler,
+  updateAddressHandler,
 } from "./backend/controllers/AddressController";
 import { categories } from "./backend/db/categories";
 import { products } from "./backend/db/products";
@@ -93,6 +94,7 @@ export function makeServer({ environment = "development" } = {}) {
       // address routes (private)
       this.post("/user/address", addNewAddressHandler.bind(this));
       this.delete("/user/address/:addressId", removeAddressHandler.bind(this));
+      this.post("/user/address/:cartItemId", updateAddressHandler.bind(this));
     },
   });
 }
