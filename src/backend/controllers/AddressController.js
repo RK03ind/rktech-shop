@@ -1,6 +1,6 @@
 import { Response } from "miragejs";
 import { v4 as uuid } from "uuid";
-import { formatDate, requiresAuth } from "../utils/authUtils";
+import { requiresAuth } from "../utils/authUtils";
 
 /**
  * All the routes related to User address list are present here.
@@ -79,13 +79,13 @@ export const removeAddressHandler = function (schema, request) {
 };
 
 /**
- * This handler handles adding items to user's cart.
- * send POST Request at /api/user/cart/:productId
- * body contains {action} (whose 'type' can be increment or decrement)
+ * This handler handles updating items in user's address list.
+ * send POST Request at /api/user/cart/:cartItemId
+ * body contains {address}
  * */
 
-export const updateCartItemHandler = function (schema, request) {
-  const productId = request.params.productId;
+export const updateAddressHandler = function (schema, request) {
+  const cartItemId = request.params.cartItemId;
   const userId = requiresAuth.call(this, request);
   try {
     if (!userId) {
@@ -97,25 +97,14 @@ export const updateCartItemHandler = function (schema, request) {
         }
       );
     }
-    const userCart = schema.users.findBy({ _id: userId }).cart;
-    const { action } = JSON.parse(request.requestBody);
-    if (action.type === "increment") {
-      userCart.forEach((product) => {
-        if (product._id === productId) {
-          product.qty += 1;
-          product.updatedAt = formatDate();
-        }
-      });
-    } else if (action.type === "decrement") {
-      userCart.forEach((product) => {
-        if (product._id === productId) {
-          product.qty -= 1;
-          product.updatedAt = formatDate();
-        }
-      });
-    }
-    this.db.users.update({ _id: userId }, { cart: userCart });
-    return new Response(200, {}, { cart: userCart });
+    const userAddress = schema.users.findBy({ _id: userId }).address;
+    let { address } = JSON.parse(request.requestBody);
+    const newAddress = userAddress.map((item) => {
+      if (item._id === cartItemId) return { _id: cartItemId, ...address };
+      return item;
+    });
+    this.db.users.update({ _id: userId }, { address: newAddress });
+    return new Response(200, {}, { address: newAddress });
   } catch (error) {
     return new Response(
       500,
