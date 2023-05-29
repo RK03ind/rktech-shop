@@ -5,3 +5,52 @@
   padding: 0.8rem 1.5rem;
   border-top: 3px solid rgb(66, 99, 165);
 }
+
+.address-card > h4 {
+  padding-bottom: 0.2rem;
+  border-bottom: 1.5px solid black;
+  font-weight: 800;
+  width: fit-content;
+  margin-bottom: 2rem;
+}
+
+.address-card .address-item {
+  margin-bottom: 2rem;
+}
+
+.address-card .address-item > h4 {
+  margin-bottom: 0.4rem;
+}
+
+.address-card .address-item > span {
+  display: block;
+  font-size: 0.8em;
+  margin-bottom: 0.4rem;
+}
+
+.address-card .address-item .address-action {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.address-card .address-item .address-action > span {
+  display: flex;
+  cursor: pointer;
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+}
+
+.address-card .address-item .address-action > span:nth-child(1) {
+  border: 2px solid dimgray;
+  fill: dimgray;
+}
+
+.address-card .address-item .address-action > span:nth-child(2) {
+  border: 2px solid red;
+  margin-left: 1rem;
+  fill: red;
+}
+
+.address-card .address-item .address-action > span svg {
+  fill: inherit;
+}
