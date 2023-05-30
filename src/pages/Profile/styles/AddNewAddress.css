@@ -1,8 +1,61 @@
 .add-address {
   position: fixed;
   display: flex;
-  top: 20px;
-  background: #f8f8f8;
-  box-shadow: 0px 3px 18px 0 rgba(100, 100, 111, 0.2);
+  flex-direction: column;
+  text-align: center;
+  top: 130px;
+  width: 24rem;
+  max-width: 94vw;
+  padding: 2rem;
+  /* background: #f8f8f8; */
+  /* box-shadow: 0px 3px 18px 0 rgba(100, 100, 111, 0.2); */
+  background: white;
+  box-shadow: 0 6px 24px 0 rgba(100, 100, 111, 0.2);
   z-index: 999999;
+}
+.add-address h3 {
+  margin: 0rem 0 1.5rem 0;
+}
+.add-address form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.add-address input {
+  border-radius: 5px;
+  border: 2px solid #dfdfdf;
+  font-size: 0.85rem;
+  font-family: inherit;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.add-address input:focus,
+.add-address input:hover {
+  border-color: rgba(53, 69, 100, 1);
+}
+
+.add-address .form-actions {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.add-address .form-actions > button {
+  cursor: pointer;
+  padding: 0.3rem 0.6rem;
+  font-weight: 800;
+  background-color: rgb(64, 83, 120);
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  margin-right: 1.25rem;
+}
+
+.add-address .form-actions > button:nth-child(1) {
+  background-color: rgb(49 90 180);
+}
+
+.add-address .form-actions > button:nth-child(2) {
+  background-color: rgb(255, 0, 0);
 }
