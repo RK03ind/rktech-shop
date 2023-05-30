@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { hasNoEmptyProperties } from "../../utils/hasNoEmptyProperties";
 import { toast } from "react-toastify";
-import { persistLoginData } from "../../utils/persistLoginData";
 import { trimObjectValues } from "../../utils/trimObjectValues";
 const Signup = () => {
   const { data, loading, error, postData } = usePostData("/api/auth/signup");
@@ -21,9 +20,10 @@ const Signup = () => {
 
   useEffect(() => {
     if (!loading && !error && data) {
-      authCtx.dispatch({ type: "UPDATE_TOKEN", payload: data.encodedToken });
-      authCtx.dispatch({ type: "UPDATE_USER", payload: data.createdUser });
-      persistLoginData(data.encodedToken, data.createdUser);
+      authCtx.dispatch({
+        type: "LOGIN",
+        payload: { user: data.createdUser, token: data.encodedToken },
+      });
       navigate("/products");
     }
   }, [loading, error, data, navigate, authCtx]);
