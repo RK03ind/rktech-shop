@@ -7,15 +7,13 @@ const intialValue = {
 };
 const reducer = (state, action) => {
   switch (action.type) {
-    case "UPDATE_TOKEN":
+    case "LOGIN":
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
       return {
         ...state,
-        token: action.payload,
-      };
-    case "UPDATE_USER":
-      return {
-        ...state,
-        userData: action.payload,
+        token: action.payload.token,
+        userData: action.payload.user,
       };
     case "UPDATE_CART":
       return {
@@ -42,6 +40,8 @@ const reducer = (state, action) => {
         },
       };
     case "LOGOUT":
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
       return {
         token: null,
         userData: null,
