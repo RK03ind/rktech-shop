@@ -14,6 +14,7 @@ const AddNewAddress = ({
   zipCode = "",
   contactNo = "",
   _id = undefined,
+  closeForm = undefined,
 }) => {
   const [formState, setFormState] = useState({
     name,
@@ -39,9 +40,10 @@ const AddNewAddress = ({
       !updateExisitingAddress.loading
     ) {
       if (_id) {
-        console.log("lmao im here");
+        closeForm(false);
         return updateExisitingAddress.postData({ address: { ...dataObj } });
       }
+      closeForm(false);
       return addNewAddress.postData({ address: { ...dataObj } });
     }
     toast.warn("Fill up all the required input fields");
@@ -107,6 +109,8 @@ const AddNewAddress = ({
       </form>
       <div className="form-actions">
         <button onClick={postNewAddressData}>Save</button>
+        <button onClick={() => closeForm(false)}>Cancel</button>
+        <button>+ Dummy Address</button>
       </div>
     </div>
   );
