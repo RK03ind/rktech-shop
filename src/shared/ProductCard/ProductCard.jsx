@@ -26,8 +26,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
     if (!authCtx.state.token) {
       toast.error("Login to use Cart");
       navigate("/login");
-    }
-    if (!req.loading) {
+    } else if (!req.loading) {
       req.postData(itemData);
     }
   };
