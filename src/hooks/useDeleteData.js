@@ -34,8 +34,9 @@ const useDeleteData = (url, isAuthRequired = false, stateToUpdate = null) => {
       }
       setData(result);
     } catch (err) {
-      const parsedErr = JSON.parse(err.message);
-      setError(parsedErr);
+      const { status, message } = JSON.parse(err.message);
+      setError({ status, message });
+      toast.error(`${status} - ${message}`);
     } finally {
       setLoading(false);
     }
