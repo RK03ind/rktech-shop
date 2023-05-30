@@ -18,6 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Loader from "./shared/Loader/Loader";
 import { LoaderContext } from "./context/LoaderContext";
 import Signup from "./pages/Signup/Signup";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -36,12 +37,14 @@ function App() {
                 <Route path="profile" element={<Profile />} />
                 <Route path="login" element={<Navigate to="/profile" />} />
                 <Route path="signup" element={<Navigate to="/profile" />} />
+                <Route path="cart" element={<Cart />} />
               </>
             ) : (
               <>
                 <Route path="login" element={<Login />} />
                 <Route path="signup" element={<Signup />} />
                 <Route path="profile" element={<Navigate to="/login" />} />
+                <Route path="cart" element={<Navigate to="/login" />} />
               </>
             )}
             <Route path="*" element={<Navigate to="/products" />} />
@@ -58,7 +61,6 @@ function App() {
         newestOnTop
         closeOnClick
         rtl={false}
-        pauseOnFocusLoss
         draggable
         theme="light"
         closeButton={false}

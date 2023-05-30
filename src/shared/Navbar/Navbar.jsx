@@ -19,7 +19,7 @@ const Navbar = () => {
             onClick={() => filterMenuCtx.dispatch({ type: "TOGGLE_SEARCH" })}
           />
           <FaShoppingBag onClick={() => navigate("products")} />
-          <FaShoppingCart />
+          <FaShoppingCart onClick={() => navigate("cart")} />
           <FaHeart />
           <FaUser onClick={() => navigate("profile")} />
         </div>
