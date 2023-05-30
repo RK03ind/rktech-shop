@@ -1,0 +1,81 @@
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  max-width: 96vw;
+  box-shadow: 0 6px 20px 0 rgba(100, 100, 111, 0.2);
+}
+
+.cart-data {
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.cart-data img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.cart-item-details .name {
+  font-size: 0.94rem;
+  font-weight: 900;
+}
+
+.cart-item-details .other {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: rgba(46, 175, 35, 1);
+  margin-top: 0.6rem;
+}
+
+.cart-item-details .other span {
+  color: dimgray;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.quantity-wrapper {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin-top: 1.25rem;
+}
+
+.quantity-wrapper .qty {
+  cursor: default;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid black;
+}
+.quantity-wrapper .dec:hover {
+  color: red;
+}
+.quantity-wrapper .inc:hover {
+  color: green;
+}
+
+.cart-action {
+  display: flex;
+  border-top: 1px solid rgb(184, 184, 184);
+  padding: 0.85rem;
+  font-weight: 700;
+  justify-content: space-around;
+}
+.cart-action span {
+  cursor: pointer;
+}
+.cart-action > .remove {
+  color: red;
+}
+
+.cart-action:not(:first-child):hover {
+  color: rgba(0, 138, 221, 1);
+}
