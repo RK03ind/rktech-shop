@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { LoaderContext } from "../context/LoaderContext";
+import { toast } from "react-toastify";
 const useGetData = (url, isAuthRequired = false) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,18 +17,25 @@ const useGetData = (url, isAuthRequired = false) => {
             authorization: isAuthRequired ? authCtx.token : "",
           },
         });
-        if (!response.ok) {
-          throw new Error("Failed to fetch data");
-        }
         const responseData = await response.json();
+        if (!response.ok) {
+          throw new Error(
+            JSON.stringify({
+              status: response.status,
+              message: responseData.errors[0],
+            })
+          );
+        }
         setData(responseData);
         //Creating artificial delay since data is received almost immediately in mockbee fake backend
         setTimeout(() => {
           loaderCtx.set(false);
           setLoading(false);
         }, 800);
-      } catch (error) {
-        setError(error);
+      } catch (err) {
+        const { status, message } = JSON.parse(err.message);
+        setError({ status, message });
+        toast.error(`${status} - ${message}`);
         setLoading(false);
       }
     };
