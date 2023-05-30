@@ -22,7 +22,7 @@ const AddressCard = () => {
           + Add New Address
         </span>
       </div>
-      {isFormVisible && <AddNewAddress />}
+      {isFormVisible && <AddNewAddress closeForm={setFormVisibility} />}
     </>
   );
 };

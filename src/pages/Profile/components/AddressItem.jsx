@@ -28,7 +28,9 @@ const AddressItem = (props) => {
           </span>
         </div>
       </div>
-      {isFormVisible && <AddNewAddress {...props} />}
+      {isFormVisible && (
+        <AddNewAddress {...{ ...props, closeForm: setFormVisibility }} />
+      )}
     </>
   );
 };
