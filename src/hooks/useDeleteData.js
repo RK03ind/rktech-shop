@@ -18,10 +18,12 @@ const useDeleteData = (url, isAuthRequired = false, stateToUpdate = null) => {
           authorization: isAuthRequired ? authCtx.state.token : "",
         },
       });
-      if (!response.ok) {
-        throw new Error("An error occurred while making the request.");
-      }
       const result = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          JSON.stringify({ status: response.status, message: result.errors[0] })
+        );
+      }
       //Updating context state
       if (stateToUpdate && url.split("/").includes(stateToUpdate)) {
         authCtx.dispatch({
@@ -32,7 +34,8 @@ const useDeleteData = (url, isAuthRequired = false, stateToUpdate = null) => {
       }
       setData(result);
     } catch (err) {
-      setError(err.message);
+      const parsedErr = JSON.parse(err.message);
+      setError(parsedErr);
     } finally {
       setLoading(false);
     }

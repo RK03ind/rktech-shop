@@ -19,10 +19,13 @@ const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
         },
         body: JSON.stringify(body),
       });
-      if (!response.ok) {
-        throw new Error("An error occurred while making the request.");
-      }
       const result = await response.json();
+      if (!response.ok) {
+        throw new Error(
+          JSON.stringify({ status: response.status, message: result.errors[0] })
+        );
+      }
+      //Context state updating logic
       if (stateToUpdate && url.split("/").includes(stateToUpdate)) {
         authCtx.dispatch({
           type: `UPDATE_${stateToUpdate.toUpperCase()}`,
@@ -32,7 +35,8 @@ const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
       }
       setData(result);
     } catch (err) {
-      setError(err.message);
+      const parsedErr = JSON.parse(err.message);
+      setError(parsedErr);
     } finally {
       setLoading(false);
     }
