@@ -58,6 +58,8 @@ function App() {
         position="top-center"
         autoClose={1500}
         hideProgressBar={false}
+        pauseOnHover={false}
+        pauseOnFocusLoss={false}
         newestOnTop
         closeOnClick
         rtl={false}
