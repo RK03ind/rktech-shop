@@ -1,12 +1,14 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const postData = async (body) => {
     setLoading(true);
@@ -21,6 +23,11 @@ const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
       });
       const result = await response.json();
       if (!response.ok) {
+        if (response.status === 401) {
+          authCtx.dispatch({ type: "LOGOUT" });
+          navigate("/login");
+          toast.error("Login again to continue");
+        }
         throw new Error(
           JSON.stringify({ status: response.status, message: result.errors[0] })
         );
