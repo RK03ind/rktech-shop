@@ -1,4 +1,4 @@
-import { Response } from "miragejs";
+// import { Response } from "miragejs";
 import dayjs from "dayjs";
 import jwt_decode from "jwt-decode";
 
@@ -14,11 +14,7 @@ export const requiresAuth = function (request) {
       return user._id;
     }
   }
-  return new Response(
-    401,
-    {},
-    { errors: ["The token is invalid. Unauthorized access error."] }
-  );
+  return undefined;
 };
 
 export const formatDate = () => dayjs().format("YYYY-MM-DDTHH:mm:ssZ");
