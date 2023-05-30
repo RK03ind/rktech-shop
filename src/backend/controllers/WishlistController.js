@@ -16,10 +16,10 @@ export const getWishlistItemsHandler = function (schema, request) {
   const userId = requiresAuth.call(this, request);
   if (!userId) {
     return new Response(
-      404,
+      401,
       {},
       {
-        errors: ["The email you entered is not Registered. Not Found error"],
+        errors: ["Invalid token. Unauthorized user"],
       }
     );
   }
@@ -38,10 +38,10 @@ export const addItemToWishlistHandler = function (schema, request) {
   try {
     if (!userId) {
       return new Response(
-        404,
+        401,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["Invalid token. Unauthorized user"],
         }
       );
     }
@@ -76,10 +76,10 @@ export const removeItemFromWishlistHandler = function (schema, request) {
   try {
     if (!userId) {
       return new Response(
-        404,
+        401,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["Invalid token. Unauthorized user"],
         }
       );
     }

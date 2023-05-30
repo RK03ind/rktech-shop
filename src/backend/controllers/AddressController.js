@@ -19,10 +19,10 @@ export const addNewAddressHandler = function (schema, request) {
   try {
     if (!userId) {
       return new Response(
-        404,
+        401,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["Invalid token. Unauthorized user"],
         }
       );
     }
@@ -55,10 +55,10 @@ export const removeAddressHandler = function (schema, request) {
   try {
     if (!userId) {
       return new Response(
-        404,
+        401,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["Invalid token. Unauthorized user"],
         }
       );
     }
@@ -90,10 +90,10 @@ export const updateAddressHandler = function (schema, request) {
   try {
     if (!userId) {
       return new Response(
-        404,
+        401,
         {},
         {
-          errors: ["The email you entered is not Registered. Not Found error"],
+          errors: ["Invalid token. Unauthorized user"],
         }
       );
     }
