@@ -38,7 +38,8 @@ const usePostData = (url, isAuthRequired = false, stateToUpdate = null) => {
           type: `UPDATE_${stateToUpdate.toUpperCase()}`,
           payload: result[stateToUpdate],
         });
-        toast.success(`Added to ${stateToUpdate}`);
+        if (!(url.split("/").length >= 5))
+          toast.success(`Added to ${stateToUpdate}`);
       }
       setData(result);
     } catch (err) {
