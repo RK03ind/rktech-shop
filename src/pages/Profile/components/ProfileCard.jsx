@@ -8,8 +8,6 @@ const ProfileCard = () => {
 
   const logOutUser = () => {
     authCtx.dispatch({ type: "LOGOUT" });
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
     navigate("/");
   };
 
