@@ -10,8 +10,6 @@ import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
   const filterMenuCtx = useContext(FilterMenuContext);
   const [isMenuVisible, setMenuVisibility] = useState(false);
-  // const menuRef = useRef(null);
-  // const menuOpenerRef = useRef(null);
   const navigate = useNavigate();
   const toggleMobileMenu = (e) => {
     setMenuVisibility((prevState) => {
