@@ -31,7 +31,7 @@ nav .nav-tabs svg {
 nav .nav-tabs svg:hover {
   color: yellow;
 }
-nav svg.mobile-menu {
+nav .mobile-menu {
   display: none;
   font-size: 1.5rem;
   color: white;
@@ -51,7 +51,7 @@ nav svg.mobile-menu {
     background: rgba(53, 69, 100, 1);
     padding: 1rem;
   }
-  nav svg.mobile-menu {
-    display: inline-block;
+  nav .mobile-menu {
+    display: block;
   }
 }
