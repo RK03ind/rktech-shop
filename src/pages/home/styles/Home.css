@@ -2,6 +2,11 @@
   padding: 1.5rem;
 }
 
+.category-container > h1 {
+  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 0.714rem + 3.429vw, 2rem);
+}
+
 .category-items {
   display: flex;
   flex-wrap: wrap;
@@ -17,4 +22,11 @@
   justify-content: center;
   cursor: pointer;
   gap: 0.5rem;
+}
+
+@media screen and (max-width: 390px) {
+  .category-items {
+    gap: 2rem 1rem;
+    justify-content: space-between;
+  }
 }
