@@ -21,10 +21,45 @@
   flex-direction: column;
   gap: 2rem;
 }
+
 .checkout-card {
   position: sticky;
   top: 100px;
-  width: 20rem;
-  padding: 2rem;
+  width: 22rem;
+  height: fit-content;
+  padding: 1.5rem 2rem;
   box-shadow: 0 6px 20px 0 rgba(100, 100, 111, 0.2);
+}
+
+.price-details > h4 {
+  margin: 0;
+  padding: 0.8rem 0;
+  border-top: 1px solid rgb(184, 184, 184);
+  border-bottom: 1px solid rgb(184, 184, 184);
+  text-align: center;
+}
+
+.price-details .price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.price-details .price-item.final {
+  padding: 0.5rem 0;
+  border-top: 1px solid rgb(184, 184, 184);
+  border-bottom: 1px solid rgb(184, 184, 184);
+  font-weight: 800;
+}
+
+.checkout-card > button {
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: rgb(64, 83, 120);
+  color: white;
+  border: 0;
+  margin-top: 1.5rem;
 }
