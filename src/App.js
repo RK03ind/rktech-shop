@@ -4,22 +4,21 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import "./App.css";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+import { LoaderContext } from "./context/LoaderContext";
 import Mockman from "mockman-js";
 import Navbar from "./shared/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
 import Login from "./pages/Login/Login";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
-import Profile from "./pages/Profile/Profile";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Loader from "./shared/Loader/Loader";
-import { LoaderContext } from "./context/LoaderContext";
 import Signup from "./pages/Signup/Signup";
+import Profile from "./pages/Profile/Profile";
 import Cart from "./pages/Cart/Cart";
 import Wishlist from "./pages/Wishlist/Wishlist";
+import Loader from "./shared/Loader/Loader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -47,6 +46,7 @@ function App() {
                 <Route path="signup" element={<Signup />} />
                 <Route path="profile" element={<Navigate to="/login" />} />
                 <Route path="cart" element={<Navigate to="/login" />} />
+                <Route path="wishlist" element={<Navigate to="/login" />} />
               </>
             )}
             <Route path="*" element={<Navigate to="/products" />} />
