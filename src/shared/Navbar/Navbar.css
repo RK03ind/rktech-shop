@@ -1,7 +1,7 @@
 nav {
   display: flex;
   align-items: center;
-  padding: 0.8rem 4rem;
+  padding: 1rem clamp(1.5rem, 0.542vw + 1.292rem, 2.5rem);
   position: sticky;
   top: 0;
   width: 100vw;
@@ -12,7 +12,7 @@ nav {
 }
 nav .title {
   font-weight: 500;
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 0.542vw + 1.292rem, 1.8rem);
   color: white;
 }
 
@@ -30,4 +30,28 @@ nav .nav-tabs svg {
 
 nav .nav-tabs svg:hover {
   color: yellow;
+}
+nav svg.mobile-menu {
+  display: none;
+  font-size: 1.5rem;
+  color: white;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 475px) {
+  nav .nav-tabs {
+    display: none;
+  }
+  nav .nav-tabs.active {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    top: 64px;
+    right: 8px;
+    background: rgba(53, 69, 100, 1);
+    padding: 1rem;
+  }
+  nav svg.mobile-menu {
+    display: inline-block;
+  }
 }
