@@ -10,15 +10,17 @@ import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
   const filterMenuCtx = useContext(FilterMenuContext);
   const [isMenuVisible, setMenuVisibility] = useState(false);
-  const menuRef = useRef(null);
-  const menuOpenerRef = useRef(null);
+  // const menuRef = useRef(null);
+  // const menuOpenerRef = useRef(null);
   const navigate = useNavigate();
   const toggleMobileMenu = (e) => {
     setMenuVisibility((prevState) => {
       return !prevState;
     });
   };
-  useOnClickOutside(menuRef, setMenuVisibility, menuOpenerRef);
+  const { ref: menuRef, exceptionRefArr: menuOpenerRef } =
+    useOnClickOutside(setMenuVisibility);
+
   return (
     <>
       <nav>
@@ -38,7 +40,10 @@ const Navbar = () => {
           <FaHeart onClick={() => navigate("wishlist")} />
           <FaUser onClick={() => navigate("profile")} />
         </div>
-        <div className="mobile-menu" ref={menuOpenerRef}>
+        <div
+          className="mobile-menu"
+          ref={(elem) => (menuOpenerRef.current[0] = elem)}
+        >
           <GiHamburgerMenu className="mobile-menu" onClick={toggleMobileMenu} />
         </div>
       </nav>

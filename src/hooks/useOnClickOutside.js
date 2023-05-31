@@ -1,13 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
-const useOnClickOutside = (ref, toggler, exceptionRef) => {
+const useOnClickOutside = (toggler) => {
+  const ref = useRef(null);
+  const exceptionRefArr = useRef([]);
   useEffect(() => {
     const listener = (event) => {
       event.stopPropagation();
       if (
         !ref.current ||
         ref.current.contains(event.target) ||
-        exceptionRef.current.contains(event.target)
+        exceptionRefArr.current.some((ref) => ref.contains(event.target))
       ) {
         return;
       }
@@ -22,6 +24,10 @@ const useOnClickOutside = (ref, toggler, exceptionRef) => {
       document.removeEventListener("touchstart", listener);
     };
   }, [ref, toggler]);
+  return {
+    ref,
+    exceptionRefArr,
+  };
 };
 
 export default useOnClickOutside;
