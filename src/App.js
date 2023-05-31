@@ -10,7 +10,7 @@ import { LoaderContext } from "./context/LoaderContext";
 import Mockman from "mockman-js";
 import Navbar from "./shared/Navbar/Navbar";
 import Home from "./pages/Home/Home";
-import Products from "./pages/Products/Products";
+import ProductList from "./pages/ProductList/ProductList";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import Profile from "./pages/Profile/Profile";
@@ -31,7 +31,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="products" element={<Products />} />
+            <Route path="products" element={<ProductList />} />
             {authCtx.state.token ? (
               <>
                 <Route path="profile" element={<Profile />} />

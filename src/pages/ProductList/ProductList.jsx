@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import FilterMenu from "../../shared/FilterMenu/FilterMenu";
-import "./styles/Products.css";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 import useGetData from "../../hooks/useGetData";
+import FilterMenu from "../../shared/FilterMenu/FilterMenu";
 import ProductCard from "../../shared/ProductCard/ProductCard";
-const Products = () => {
+import "./styles/ProductList.css";
+
+const ProductList = () => {
   const { state: filterState } = useContext(FilterMenuContext);
   const { data, loading, error } = useGetData("/api/products");
 
@@ -32,7 +33,7 @@ const Products = () => {
   };
 
   return (
-    <div className="products">
+    <div className="product-list">
       <FilterMenu />
       <div className="product-wrapper">
         <h2>Products</h2>
@@ -40,7 +41,8 @@ const Products = () => {
           {!loading && !error && filteredMappedProducts()}
         </div>
       </div>
+      <div className="filter-button"></div>
     </div>
   );
 };
-export default Products;
+export default ProductList;
