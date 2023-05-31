@@ -16,6 +16,11 @@
   flex-wrap: wrap;
   gap: 5rem;
 }
+
+.cart-items > h1 {
+  font-size: 1.6rem;
+  font-size: clamp(1.6rem, 1.029rem + 2.86vw, 2rem);
+}
 .cart-item-wrapper {
   display: flex;
   flex-direction: column;
