@@ -1,5 +1,6 @@
 .product-list {
   display: flex;
+  position: relative;
 }
 
 .product-wrapper {
@@ -19,4 +20,33 @@
   gap: 3.5rem;
   align-items: flex-start;
   justify-content: center;
+}
+
+.filter-button {
+  display: none;
+  position: absolute;
+  right: 26px;
+  top: 36px;
+  border-radius: 4px;
+  padding: 0.45rem 0.9rem;
+  /* display: flex; */
+  gap: 0.35rem;
+  background: rgba(0, 138, 221, 1);
+  color: white;
+  align-items: center;
+}
+
+@media screen and (max-width: 1470px) {
+  .products-container {
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .product-wrapper {
+    margin-left: 0;
+  }
+  .filter-button {
+    display: flex;
+  }
 }
