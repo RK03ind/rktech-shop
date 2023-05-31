@@ -1,7 +1,7 @@
 nav {
   display: flex;
   align-items: center;
-  padding: 1rem clamp(1.5rem, 0.542vw + 1.292rem, 2.5rem);
+  padding: 1rem clamp(1.5rem, -0.649rem + 8.11vw, 3rem);
   position: sticky;
   top: 0;
   width: 100vw;
