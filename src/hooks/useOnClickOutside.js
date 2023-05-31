@@ -9,7 +9,7 @@ const useOnClickOutside = (toggler) => {
       if (
         !ref.current ||
         ref.current.contains(event.target) ||
-        exceptionRefArr.current.some((ref) => ref.contains(event.target))
+        exceptionRefArr.current.some((ref) => ref?.contains(event.target))
       ) {
         return;
       }
