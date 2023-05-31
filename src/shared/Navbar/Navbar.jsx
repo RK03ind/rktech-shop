@@ -4,7 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import SearchBar from "../SearchBar/SearchBar";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 import useOnClickOutside from "../../hooks/useOnClickOutside";
 const Navbar = () => {
