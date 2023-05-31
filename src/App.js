@@ -19,6 +19,7 @@ import Loader from "./shared/Loader/Loader";
 import { LoaderContext } from "./context/LoaderContext";
 import Signup from "./pages/Signup/Signup";
 import Cart from "./pages/Cart/Cart";
+import Wishlist from "./pages/Wishlist/Wishlist";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -38,6 +39,7 @@ function App() {
                 <Route path="login" element={<Navigate to="/profile" />} />
                 <Route path="signup" element={<Navigate to="/profile" />} />
                 <Route path="cart" element={<Cart />} />
+                <Route path="wishlist" element={<Wishlist />} />
               </>
             ) : (
               <>

@@ -20,7 +20,7 @@ const Navbar = () => {
           />
           <FaShoppingBag onClick={() => navigate("products")} />
           <FaShoppingCart onClick={() => navigate("cart")} />
-          <FaHeart />
+          <FaHeart onClick={() => navigate("wishlist")} />
           <FaUser onClick={() => navigate("profile")} />
         </div>
       </nav>

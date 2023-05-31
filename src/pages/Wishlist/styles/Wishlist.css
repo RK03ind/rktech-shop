@@ -1,0 +1,19 @@
+/* .cart-container div {
+  border: 2px solid red;
+} */
+.wishlist-container {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
+}
+.wishlist-container > h2 {
+  margin: 2rem 0;
+  text-align: center;
+}
+.wishlist-items {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 4rem;
+  column-gap: 2rem;
+}
