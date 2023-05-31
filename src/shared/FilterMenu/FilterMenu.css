@@ -1,11 +1,12 @@
 .filter-menu {
   display: flex;
-  padding: 1rem 2rem 0 1.5rem;
-  width: 17rem;
-  position: fixed;
-  height: 100%;
   flex-direction: column;
   gap: 1.2rem;
+  position: fixed;
+  width: 17rem;
+  height: 100%;
+  padding: 1rem 2rem 0 1.5rem;
+  background: white;
   border-right: 1px solid #c2c2c2;
 }
 
@@ -51,4 +52,41 @@
 
 .rating-item :nth-child(3) {
   width: 3.25rem;
+}
+
+.filter-menu > .close-button {
+  display: none;
+  background-color: #dc2626;
+  color: white;
+  font-weight: 500;
+  align-self: flex-end;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 880px) {
+  .filter-menu {
+    display: none;
+    width: 22rem;
+    max-width: 90vw;
+  }
+  .filter-menu.active {
+    display: flex;
+    height: fit-content;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    border: 0;
+    box-shadow: 0 2px 10px 0 rgba(100, 100, 111, 0.5);
+  }
+
+  .filter-menu > .close-button {
+    cursor: pointer;
+    margin-top: 1rem;
+    display: block;
+  }
 }

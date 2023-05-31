@@ -4,7 +4,7 @@ import useGetData from "../../hooks/useGetData";
 import "./FilterMenu.css";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 
-const FilterMenu = () => {
+const FilterMenu = ({ filterMenuState, setFilterMenuState }) => {
   const filterMenuCtx = useContext(FilterMenuContext);
 
   const sortRadioHandler = (e) => {
@@ -20,7 +20,7 @@ const FilterMenu = () => {
 
   const { data, loading, error } = useGetData("/api/categories");
   return (
-    <div className="filter-menu">
+    <div className={`filter-menu ${filterMenuState ? "active" : ""}`}>
       <div className="filter-header">
         <h4>Filters</h4>
         <span onClick={() => filterMenuCtx.dispatch({ type: "CLEAR" })}>
@@ -72,6 +72,14 @@ const FilterMenu = () => {
           <label>{filterMenuCtx.state.rating}⭐</label>
         </div>
       </div>
+      {filterMenuState && (
+        <button
+          className="close-button"
+          onClick={() => setFilterMenuState(false)}
+        >
+          Close
+        </button>
+      )}
     </div>
   );
 };
