@@ -7,7 +7,7 @@ import {
 import "./App.css";
 import Mockman from "mockman-js";
 import Navbar from "./shared/Navbar/Navbar";
-import Home from "./pages/home/Home";
+import Home from "./pages/Home/Home";
 import Products from "./pages/Products/Products";
 import Login from "./pages/Login/Login";
 import { useContext } from "react";
