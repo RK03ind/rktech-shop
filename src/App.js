@@ -19,6 +19,7 @@ import Wishlist from "./pages/Wishlist/Wishlist";
 import Loader from "./shared/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Product from "./pages/Product/Product";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="products" element={<ProductList />} />
+            <Route path="/product/:productId" element={<Product />} />
             {authCtx.state.token ? (
               <>
                 <Route path="profile" element={<Profile />} />
