@@ -1,0 +1,77 @@
+.product {
+  display: flex;
+  gap: 5rem;
+  margin-top: 5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.product > img {
+  height: clamp(20rem, 13.303rem + 30.358vw, 30rem);
+  border: 2px solid #eee;
+}
+
+.product .product-details .title {
+  font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.product .product-details .price {
+  font-size: 2rem;
+  color: green;
+  font-weight: 700;
+}
+
+.product .product-details .rating {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #e67a00;
+  font-weight: 700;
+  margin: 0.25rem 0 2rem 0.25rem;
+}
+
+.product .product-details .label {
+  color: #7d7d7d;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.action-buttons {
+  width: 20rem;
+  margin-top: 3rem;
+}
+
+.action-buttons button {
+  cursor: pointer;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  background-color: rgb(49 90 180);
+  font-weight: 700;
+  color: white;
+  border: 0;
+  margin-bottom: 1rem;
+}
+
+.action-buttons .cart-button {
+  background-color: rgb(64, 83, 120);
+}
+
+@media screen and (max-width: 880px) {
+  .product {
+    flex-direction: column;
+    align-items: normal;
+    gap: 2rem;
+    width: fit-content;
+    max-width: 96vw;
+    margin: 2rem auto 0 auto;
+  }
+  .product .product-details .title {
+    margin-bottom: 1rem;
+  }
+  .product .product-details .action-buttons {
+    width: auto;
+  }
+}

@@ -38,7 +38,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
   };
 
   return (
-    <div className="product-card">
+    <div className="product-card" onClick={() => navigate(`/product/${_id}`)}>
       <img src={imageLink} alt={name} />
       <div className="seperator"></div>
       <div className="product-info">
