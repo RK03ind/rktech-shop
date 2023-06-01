@@ -13,13 +13,13 @@
 
 .product .product-details .title {
   font-size: 1.6rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.6rem;
 }
 
 .product .product-details .price {
   font-size: 2rem;
+  color: green;
   font-weight: 700;
-  /* margin-bottom: 0.25rem; */
 }
 
 .product .product-details .rating {
@@ -28,7 +28,6 @@
   gap: 0.25rem;
   color: #e67a00;
   font-weight: 700;
-  /* margin: 0 0 2rem 0; */
   margin: 0.25rem 0 2rem 0.25rem;
 }
 
@@ -39,21 +38,25 @@
   margin-bottom: 0.25rem;
 }
 
-.product .product-details .action-buttons {
+.action-buttons {
   width: 18rem;
   margin-top: 3rem;
 }
 
-.product .product-details .action-buttons button {
+.action-buttons button {
   cursor: pointer;
   width: 100%;
   padding: 0.8rem;
   font-size: 0.9rem;
+  background-color: rgb(49 90 180);
   font-weight: 700;
-  background-color: rgb(64, 83, 120);
   color: white;
   border: 0;
   margin-bottom: 1rem;
+}
+
+.action-buttons .cart-button {
+  background-color: rgb(64, 83, 120);
 }
 
 @media screen and (max-width: 850px) {
@@ -63,6 +66,9 @@
     width: fit-content;
     margin: 2rem auto 0 auto;
     align-items: normal;
+  }
+  .product .product-details .title {
+    margin-bottom: 1rem;
   }
   .product .product-details .action-buttons {
     width: auto;
