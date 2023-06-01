@@ -22,9 +22,10 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
   const navigate = useNavigate();
   const itemData = { product: { imageLink, rating, price, name, _id } };
 
-  const addToHandler = (req) => {
+  const addToHandler = (e, req) => {
+    e.stopPropagation();
     if (!authCtx.state.token) {
-      toast.error("Login to use Cart");
+      toast.error("Login to use this feature");
       navigate("/login");
     } else if (!req.loading) {
       req.postData(itemData);
@@ -51,7 +52,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
             <BsFillCartCheckFill />
           </div>
         ) : (
-          <div onClick={() => addToHandler(addToCart)}>
+          <div onClick={(e) => addToHandler(e, addToCart)}>
             <BsFillCartPlusFill />
           </div>
         )}
