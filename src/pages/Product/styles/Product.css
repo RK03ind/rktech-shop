@@ -62,10 +62,11 @@
 @media screen and (max-width: 880px) {
   .product {
     flex-direction: column;
+    align-items: normal;
     gap: 2rem;
     width: fit-content;
+    max-width: 96vw;
     margin: 2rem auto 0 auto;
-    align-items: normal;
   }
   .product .product-details .title {
     margin-bottom: 1rem;
