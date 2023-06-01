@@ -39,7 +39,7 @@
 }
 
 .action-buttons {
-  width: 18rem;
+  width: 20rem;
   margin-top: 3rem;
 }
 
@@ -59,7 +59,7 @@
   background-color: rgb(64, 83, 120);
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 880px) {
   .product {
     flex-direction: column;
     gap: 2rem;
