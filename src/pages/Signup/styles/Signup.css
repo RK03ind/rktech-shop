@@ -1,7 +1,7 @@
 .signup-container {
   display: grid;
   place-items: center;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 6rem);
 }
 
 .signup-container .signup-card {
@@ -50,6 +50,10 @@
   background-color: rgb(64, 83, 120);
   color: white;
   border: 0;
+}
+
+.signup-container .signup-card button:hover {
+  background-color: rgba(0, 138, 221, 1);
 }
 
 .signup-container .signup-card .login {
