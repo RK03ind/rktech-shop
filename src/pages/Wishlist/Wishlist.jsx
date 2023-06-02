@@ -11,7 +11,7 @@ const Wishlist = () => {
   return (
     <>
       <div className="wishlist-container">
-        <h2>My Cart</h2>
+        <h2>My Wishlist</h2>
         <div className="wishlist-items">
           {wishlist.length === 0 ? (
             <h1>No Items in Wishlist 😟</h1>
