@@ -33,7 +33,7 @@
 
 @media screen and (max-width: 500px) {
   .carousel img {
-    height: 35vh;
+    height: 30vh;
     width: 100vw !important;
   }
 }
