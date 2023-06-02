@@ -32,7 +32,8 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
     }
   };
 
-  const removeFromHandler = (req) => {
+  const removeFromHandler = (e, req) => {
+    e.stopPropagation();
     if (!req.loading) {
       req.deleteData();
     }
@@ -48,7 +49,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
       </div>
       <div className="product-action">
         {authCtx.state.userData?.cart.some((item) => item._id === _id) ? (
-          <div onClick={() => removeFromHandler(removeFromCart)}>
+          <div onClick={(e) => removeFromHandler(e, removeFromCart)}>
             <BsFillCartCheckFill />
           </div>
         ) : (
@@ -58,7 +59,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
         )}
 
         {authCtx.state.userData?.wishlist.some((item) => item._id === _id) ? (
-          <div onClick={() => removeFromHandler(removeFromWishlist)}>
+          <div onClick={(e) => removeFromHandler(e, removeFromWishlist)}>
             <AiFillHeart />
           </div>
         ) : (
