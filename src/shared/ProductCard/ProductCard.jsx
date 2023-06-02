@@ -62,7 +62,7 @@ const ProductCard = ({ imageLink, rating, price, name, _id }) => {
             <AiFillHeart />
           </div>
         ) : (
-          <div onClick={() => addToHandler(addToWishlist)}>
+          <div onClick={(e) => addToHandler(e, addToWishlist)}>
             <AiOutlineHeart />
           </div>
         )}
