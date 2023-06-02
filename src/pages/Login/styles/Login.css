@@ -1,7 +1,7 @@
 .login-container {
   display: grid;
   place-items: center;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 8rem);
 }
 
 .login-container .login-card {
@@ -50,6 +50,10 @@
   background-color: rgb(64, 83, 120);
   color: white;
   border: 0;
+}
+
+.login-container .login-card button:hover {
+  background-color: rgba(0, 138, 221, 1);
 }
 
 .login-container .login-card .register {
