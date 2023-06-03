@@ -1,0 +1,79 @@
+.checkout-card {
+  position: sticky;
+  top: 100px;
+  width: 30rem;
+  height: fit-content;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 6px 20px 0 rgba(100, 100, 111, 0.2);
+}
+
+.checkout-card.cart {
+  width: 22rem;
+}
+
+.order-details > h4,
+.price-details > h4,
+.delivery-details > h4 {
+  margin: 0;
+  padding: 0.5rem 0;
+  border-top: 1px solid rgb(184, 184, 184);
+  border-bottom: 1px solid rgb(184, 184, 184);
+  text-align: center;
+}
+
+.checkout-card.cart .order-details,
+.checkout-card.cart .price-details,
+.checkout-card.cart .delivery-details {
+  padding: 0.8rem;
+}
+
+.order-details .order-item,
+.price-details .price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.order-details .order-item.header {
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+
+.price-details {
+  margin-top: 0.5rem;
+}
+
+.price-details .price-item.final {
+  padding: 0.5rem 0;
+  font-weight: 800;
+}
+
+.delivery-details .address-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-top: 1rem;
+}
+.delivery-details .address-item > span:first-child {
+  font-weight: 500;
+  /* margin-bottom: -0.25rem; */
+}
+.delivery-details .address-item > span:not(:first-child) {
+  font-size: 0.8rem;
+}
+
+.checkout-card > button {
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  background-color: rgb(64, 83, 120);
+  color: white;
+  border: 0;
+  margin-top: 1.5rem;
+}
+
+.checkout-card > button:hover {
+  background: rgba(0, 138, 221, 1);
+}
