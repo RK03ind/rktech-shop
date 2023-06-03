@@ -20,6 +20,7 @@ import Loader from "./shared/Loader/Loader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Product from "./pages/Product/Product";
+import { ScrollToTop } from "./shared/ScrollToTop/ScrollToTop";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -29,32 +30,34 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="products" element={<ProductList />} />
-            <Route path="/product/:productId" element={<Product />} />
-            {authCtx.state.token ? (
-              <>
-                <Route path="profile" element={<Profile />} />
-                <Route path="login" element={<Navigate to="/profile" />} />
-                <Route path="signup" element={<Navigate to="/profile" />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="wishlist" element={<Wishlist />} />
-              </>
-            ) : (
-              <>
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<Signup />} />
-                <Route path="profile" element={<Navigate to="/login" />} />
-                <Route path="cart" element={<Navigate to="/login" />} />
-                <Route path="wishlist" element={<Navigate to="/login" />} />
-              </>
-            )}
-            <Route path="*" element={<Navigate to="/products" />} />
-            <Route path="mockman" element={<Mockman />} />
-          </Routes>
-        </main>
+        <ScrollToTop>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="products" element={<ProductList />} />
+              <Route path="/product/:productId" element={<Product />} />
+              {authCtx.state.token ? (
+                <>
+                  <Route path="profile" element={<Profile />} />
+                  <Route path="login" element={<Navigate to="/profile" />} />
+                  <Route path="signup" element={<Navigate to="/profile" />} />
+                  <Route path="cart" element={<Cart />} />
+                  <Route path="wishlist" element={<Wishlist />} />
+                </>
+              ) : (
+                <>
+                  <Route path="login" element={<Login />} />
+                  <Route path="signup" element={<Signup />} />
+                  <Route path="profile" element={<Navigate to="/login" />} />
+                  <Route path="cart" element={<Navigate to="/login" />} />
+                  <Route path="wishlist" element={<Navigate to="/login" />} />
+                </>
+              )}
+              <Route path="*" element={<Navigate to="/products" />} />
+              <Route path="mockman" element={<Mockman />} />
+            </Routes>
+          </main>
+        </ScrollToTop>
       </Router>
       {loaderCtx.state && <Loader />}
 
