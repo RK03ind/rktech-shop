@@ -38,7 +38,9 @@ const CheckoutCard = ({ page, address }) => {
   const buttonHandler = () => {
     if (page === "cart")
       return navigate("/checkout", { state: { prevRoute: "cart" } });
-    toast.success("Order Placed");
+    if (page === "checkout" && !address)
+      return toast.error("Add an address from profile to place order");
+    toast.success("Order Placed !!!");
     dispatch({ type: "UPDATE_CART", payload: [] });
     navigate("/products");
   };
