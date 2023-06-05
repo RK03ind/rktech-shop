@@ -25,7 +25,7 @@ const Cart = () => {
                 })}
               </div>
 
-              <CheckoutCard page="checkout" />
+              <CheckoutCard page="cart" />
             </>
           )}
         </div>
