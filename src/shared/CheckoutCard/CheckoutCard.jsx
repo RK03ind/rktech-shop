@@ -9,6 +9,7 @@ const CheckoutCard = ({ page, address }) => {
     state: {
       userData: { cart },
     },
+    dispatch,
   } = useContext(AuthContext);
   const [checkoutDataState, setCheckoutDataState] = useState({
     totalAmount: 0,
@@ -38,6 +39,7 @@ const CheckoutCard = ({ page, address }) => {
     if (page === "cart")
       return navigate("/checkout", { state: { prevRoute: "cart" } });
     toast.success("Order Placed");
+    dispatch({ type: "UPDATE_CART", payload: [] });
     navigate("/products");
   };
   return (
