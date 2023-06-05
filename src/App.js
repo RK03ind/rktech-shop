@@ -21,6 +21,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Product from "./pages/Product/Product";
 import { ScrollToTop } from "./shared/ScrollToTop/ScrollToTop";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
   const authCtx = useContext(AuthContext);
@@ -43,6 +44,7 @@ function App() {
                   <Route path="signup" element={<Navigate to="/profile" />} />
                   <Route path="cart" element={<Cart />} />
                   <Route path="wishlist" element={<Wishlist />} />
+                  <Route path="checkout" element={<Checkout />} />
                 </>
               ) : (
                 <>
