@@ -1,24 +1,20 @@
-.cart-container {
+.checkout-page {
   display: flex;
   flex-direction: column;
   padding-bottom: 5rem;
 }
-.cart-container > h2 {
+.checkout-page > h2 {
   margin: 2rem 0;
   text-align: center;
 }
-.cart-items {
+.checkout-wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 5rem;
 }
 
-.cart-items > h1 {
-  font-size: 1.6rem;
-  font-size: clamp(1.6rem, 1.029rem + 2.86vw, 2rem);
-}
-.cart-item-wrapper {
+.address-items {
   display: flex;
   flex-direction: column;
   gap: 2rem;

@@ -1,0 +1,17 @@
+.address-items > .address-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem;
+  max-width: 95vw;
+  box-shadow: 0 6px 20px 0 rgba(100, 100, 111, 0.2);
+}
+
+.address-items > .address-item > label {
+  font-weight: 500;
+}
+
+.address-items > .address-item > div {
+  font-size: 0.85rem;
+  margin-left: 0.4rem;
+}
