@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import "./CheckoutCard.css";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-const CheckoutCard = ({ page }) => {
+const CheckoutCard = ({ page, address }) => {
   const {
     state: {
       userData: { cart },
@@ -15,6 +17,7 @@ const CheckoutCard = ({ page }) => {
     initialPrice: 0,
     noOfItems: 0,
   });
+  const navigate = useNavigate();
 
   useEffect(() => {
     let initialPrice = cart.reduce(
@@ -31,21 +34,29 @@ const CheckoutCard = ({ page }) => {
     });
   }, [cart]);
 
+  const buttonHandler = () => {
+    if (page === "cart")
+      return navigate("/checkout", { state: { prevRoute: "cart" } });
+    toast.success("Order Placed");
+    navigate("/products");
+  };
   return (
     <div className={`checkout-card ${page}`}>
-      <div className="order-details">
-        <h4>ORDER DETAILS</h4>
-        <div className="order-item header">
-          <span>Item</span>
-          <span>Qty</span>
-        </div>
-        {cart.map(({ name, qty }) => (
-          <div className="order-item">
-            <span>{name}</span>
-            <span>{qty}</span>
+      {page === "checkout" && (
+        <div className="order-details">
+          <h4>ORDER DETAILS</h4>
+          <div className="order-item header">
+            <span>Item</span>
+            <span>Qty</span>
           </div>
-        ))}
-      </div>
+          {cart.map(({ name, qty }) => (
+            <div className="order-item">
+              <span>{name}</span>
+              <span>{qty}</span>
+            </div>
+          ))}
+        </div>
+      )}
       <div className="price-details">
         <h4>PRICE DETAILS</h4>
         <div className="price-item">
@@ -65,16 +76,22 @@ const CheckoutCard = ({ page }) => {
           <span>₹{checkoutDataState.totalAmount}</span>
         </div>
       </div>
-      <div className="delivery-details">
-        <h4>DELIVERY DETAILS</h4>
-        <div class="address-item">
-          <span>RK03</span>
-          <span>sunil das sarani, BC Road, Burdwan, West Bengal 713103</span>
-          <span>India</span>
-          <span>Phone No: 7908246842</span>
+      {page === "checkout" && address && (
+        <div className="delivery-details">
+          <h4>DELIVERY DETAILS</h4>
+          <div class="address">
+            <span>{address.name}</span>
+            <span>
+              {address.street}, {address.city}, {address.state}
+            </span>
+            <span>{address.country}</span>
+            <span>Phone No: {address.contactNo}</span>
+          </div>
         </div>
-      </div>
-      <button>Checkout</button>
+      )}
+      <button onClick={buttonHandler}>
+        {page === "checkout" ? "Place Order" : "Checkout"}
+      </button>
     </div>
   );
 };
