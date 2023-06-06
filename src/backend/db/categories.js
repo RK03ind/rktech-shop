@@ -8,23 +8,23 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Gaming Laptop",
-    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/gaming-laptop-3-120x120_tjrrlr.jpg",
-  },
-  {
-    _id: uuid(),
     categoryName: "Processor",
     icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/cpu-120x120_nkmac0.jpg",
   },
   {
     _id: uuid(),
-    categoryName: "Graphics Unit",
-    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/gpu-120x120_xnzhnh.jpg",
+    categoryName: "Motherboard",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/motherboard-120x120_w7bokg.jpg",
   },
   {
     _id: uuid(),
-    categoryName: "Others",
-    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/gaming-accesories-1-120x120_ktqlvy.jpg",
+    categoryName: "RAM",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/memory-ram-120x120_t3gvov.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Graphics Unit",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664240/rktech/gpu-120x120_xnzhnh.jpg",
   },
   {
     _id: uuid(),
@@ -40,5 +40,10 @@ export const categories = [
     _id: uuid(),
     categoryName: "Cabinet",
     icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/cabinet-case-120x120_ce7jjw.jpg",
+  },
+  {
+    _id: uuid(),
+    categoryName: "Others",
+    icon: "https://res.cloudinary.com/rk03/image/upload/v1684664241/rktech/gaming-accesories-1-120x120_ktqlvy.jpg",
   },
 ];

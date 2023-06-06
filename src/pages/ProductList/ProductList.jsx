@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
 import useGetData from "../../hooks/useGetData";
 import FilterMenu from "../../shared/FilterMenu/FilterMenu";
@@ -7,7 +7,7 @@ import { RiFilter2Fill } from "react-icons/ri";
 import "./styles/ProductList.css";
 
 const ProductList = () => {
-  const { state: filterState } = useContext(FilterMenuContext);
+  const { state: filterState, dispatch } = useContext(FilterMenuContext);
   const { data, loading, error } = useGetData("/api/products");
   const [filterMenuState, setFilterMenuState] = useState(false);
   const filteredMappedProducts = () => {
@@ -32,6 +32,11 @@ const ProductList = () => {
         return <ProductCard {...item} />;
       });
   };
+  useEffect(() => {
+    return () => {
+      dispatch({ type: "CLEAR" });
+    };
+  }, []);
 
   const toggleFilterMenu = () => {
     setFilterMenuState((prevState) => !prevState);

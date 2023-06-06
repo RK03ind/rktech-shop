@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import useGetData from "../../hooks/useGetData";
-
-import "./FilterMenu.css";
 import { FilterMenuContext } from "../../context/FilterMenuContext";
+import useGetData from "../../hooks/useGetData";
+import "./FilterMenu.css";
 
 const FilterMenu = ({ filterMenuState, setFilterMenuState }) => {
   const filterMenuCtx = useContext(FilterMenuContext);
