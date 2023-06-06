@@ -38,7 +38,7 @@ const Product = () => {
             <div className="rating">
               {data.product.rating} <AiFillStar />
             </div>
-            <div className="label">Product Model: 12102X0P</div>
+            <div className="label">Product Model: {data.product.model}</div>
             <div className="label">Category: {data.product.category}</div>
             <div className="action-buttons">
               {authCtx.state.userData?.cart.some(
